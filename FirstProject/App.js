@@ -1,57 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react';
 
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Image, Button, Alert } from "react-native";
+import { StackNavigator } from 'react-navigation';
+import Login from './app/components/Login'
+import Main from './app/components/Main'
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
+const AppNavigator = StackNavigator({
+    Login: {screen: Login},
+    Main: {screen: Main}
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends React.Component {
   render() {
-    let pic = {
-      uri: 'https://blog.instabug.com/wp-content/uploads/2018/03/Featured.jpg'
-    };
     return (
-      <View style={styles.container}>
-       <Image source={pic} style={{width: 250, height: 300}}/>
-       <Button
-  onPress={() => {
-    Alert.alert('Butona bastın!');
-  }}
-  title="Press Me"
-/>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      //<Main />
+      <AppNavigator />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
